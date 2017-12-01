@@ -1,0 +1,199 @@
+
+body {
+    margin-top: 55px;
+    overflow: hidden;
+}
+
+
+/* start intro section */
+
+.intro {
+    /* background: url(../images/intro-1.jpg); */
+    color: #fff;
+    height: 100%;
+    background-size: cover;
+}
+
+.intro span,
+.intro h1 {
+    font-size: 40px;
+    font-family: 'Courgette', cursive;
+}
+
+
+.intro .container div {
+    padding-top: 15%;
+}
+
+.intro .overlay {
+    background-color: rgba(3, 3, 3, .6);
+    height: 100%;
+}
+
+.intro #Intro {
+    text-align: center;
+}
+
+
+ /* end intro sec  */
+
+
+.navbar-brand,
+.head,
+.header {
+    font-family: 'Courgette', cursive;
+    font-size: 35px;
+}
+* {
+    box-sizing: border-box;
+}
+
+#navbarToggleExternalContent a:hover {
+    color: #F15FC1;
+}
+
+
+    /* header */
+.head {
+    display: inline-block;
+}
+
+.header {
+    color: #F15FC1;
+    display: inline-block;
+}
+
+
+
+a.nav-link {
+    cursor: pointer;
+}
+
+
+
+/* start login sec */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* end login sec */
+
+
+
+/* start signup sec */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* end sign up sec */
+
+
+
+/* start categories sec */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* end categories sec */
+
+
+
+/* start contact us sec */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* end contact us sec */
+
+
+
+/* start footer */
+
+footer {
+    background-color: #222;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 20px;
+}
+
+footer .copy-rights {
+    margin-bottom: 10px;
+}
+
+footer .social a {
+    color: #fff;
+    display: inline-block;
+    background: #ccc;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 10px;
+}
+
+footer .social a:first-child {
+    background-color: #3B5998;
+}
+
+footer .social a:nth-child(2) {
+    background-color: #1DA1F2;
+}
+
+footer .social a:nth-child(3) {
+    background-color: #B7177B;
+}
+
+
+/* end footer */
