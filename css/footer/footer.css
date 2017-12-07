@@ -1,7 +1,5 @@
-/* start footer */
-
 footer {
-    background-color: #222;
+    background-color: #080c29;
     padding: 10px 0;
     color: #fff;
     font-size: 20px;
@@ -33,6 +31,3 @@ footer .social a:nth-child(2) {
 footer .social a:nth-child(3) {
     background-color: #B7177B;
 }
-
-
-/* end footer */

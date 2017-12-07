@@ -18,7 +18,7 @@
 
 <body>
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-color: #080c29;">
         <div class="container">
             <a class="navbar navbar-brand" href="#"><span class="header">F</span>oodzella</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
 
             <div class="collapse navbar-collapse " id="navbarToggleExternalContent" >
 
-                <ul class="navbar-nav ml-auto ">
+                <ul class="navbar-nav ml-auto " >
                     <li class="nav-item ">
                         <a class="nav-link" data-scroll="home" href="index.php">HOME <span class="sr-only">(current)</span></a>
                     </li>
@@ -36,7 +36,26 @@
                     </li>
                    
                     <li class="nav-item">
-                        <a class="nav-link " data-scroll="contact">CONTACT US</a>
+                        <a class="nav-link " data-scroll="contact" href="index/index.php">CONTACT US</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            OPTIONS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ecea94;">
+                            <a class="dropdown-item" href="#">MESSAGES</a>
+                            <a class="dropdown-item" href="#">LOG OUT</a>
+                            <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " data-scroll="Login" href="#">LOG IN</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " data-scroll="Signup" href="SignUp/signup.php">SIGN UP</a>
                     </li>
                    
                 </ul>
@@ -50,11 +69,13 @@
         <div class="overlay">
             <div class="container" id="Intro">
                 <div class="wow bounce">
+               
+                
                     <h1 class="head"><span class="header">S</span>trike The Glory</h1>
-                    
-                </div>
+                </div>                  
             </div>
         </div>
+        
     </header>
 
 

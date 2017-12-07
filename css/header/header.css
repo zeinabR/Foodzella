@@ -1,0 +1,36 @@
+.navbar-brand,
+.head,
+.header {
+    font-family: 'Courgette', cursive;
+    font-size: 30px;
+}
+
+.navbar{
+   
+    color: #ccc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#navbarToggleExternalContent a:hover {
+    color: #e4e824;
+}
+
+
+    /* header */
+.head {
+    display: inline-block;
+}
+
+.header {
+    color: #e4e824;
+    display: inline-block;
+}
+
+
+
+a.nav-link {
+    cursor: pointer;
+}

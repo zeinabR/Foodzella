@@ -8,32 +8,31 @@ body {
 /* start intro section */
 
 .intro {
-    /* background: url(../images/intro-1.jpg); */
-    color: #fff;
+     /* background: url(../images/intro-1.jpg); */
+    color: #000;
     height: 100%;
     background-size: cover;
-}
+} 
 
-.intro span,
+ .intro span,
 .intro h1 {
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'Courgette', cursive;
 }
 
 
 .intro .container div {
-    padding-top: 15%;
+    padding-top: 5%;
 }
 
-.intro .overlay {
-    background-color: rgba(3, 3, 3, .6);
+ .intro .overlay {
+     background-color: #eee; 
     height: 100%;
-}
+} 
 
 .intro #Intro {
     text-align: center;
 }
-
 
  /* end intro sec  */
 
@@ -42,14 +41,16 @@ body {
 .head,
 .header {
     font-family: 'Courgette', cursive;
-    font-size: 35px;
+    font-size: 30px;
 }
+
+
 * {
     box-sizing: border-box;
 }
 
 #navbarToggleExternalContent a:hover {
-    color: #F15FC1;
+    color: #e4e824;
 }
 
 
@@ -59,11 +60,10 @@ body {
 }
 
 .header {
-    color: #F15FC1;
+    color: #e4e824;
     display: inline-block;
+   
 }
-
-
 
 a.nav-link {
     cursor: pointer;
@@ -162,7 +162,7 @@ a.nav-link {
 /* start footer */
 
 footer {
-    background-color: #222;
+    background-color: #080c29;
     padding: 10px 0;
     color: #fff;
     font-size: 20px;

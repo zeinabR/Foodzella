@@ -1,10 +1,10 @@
 <?php
 
     // page title
-    $pageTitle = 'Login';
+    $pageTitle = 'Recipes';
 
     // css files for this page
-    $css_files = '<link rel="stylesheet" href="../css/login/login.css">';
+    $css_files = '<link rel="stylesheet" href="../css/recipes/recipes.css">';
 
     include '../init.php';
 ?>
@@ -18,7 +18,7 @@
 
 
 <?php 
-    // $js_files = '<script src="../js/about/about.js"></script>';
+    // $js_files = '<script src="../js/recipes/recipes.js"></script>';
 
     include '../' . $tmpl . 'footer.php';
 
