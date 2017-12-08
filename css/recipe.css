@@ -1,0 +1,85 @@
+body{
+    overflow: scroll;
+    margin-top: 50px;
+}
+
+p{
+    font-family:cursive;
+}
+
+.header{
+    color:cornflowerblue;
+    text-align: center;
+    font-size: 60px;
+    text-shadow: 3px 2px darkblue;
+}
+
+.subheader{ 
+    margin-bottom:30px;
+    font-size: 50px;
+    color:chartreuse;
+    color:darkorange;
+/*    text-indent: 75px;  specify the indentation of the first line of a text*/
+}
+
+.recipe-image{
+    width: 700px;
+    height: 400px;
+    margin-left:175px;
+    margin-top: 20px;
+    margin-bottom:40px;
+    border: 2px solid GoldenRod;
+}
+
+.header{
+    color:cornflowerblue;
+    text-align: center;
+    font-size: 60px;
+}
+
+/*
+$radioBtn-size: 32px;
+$active-color: #e44;
+$inactive-color: #ccc;
+
+
+html,body { height: 100%;}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="radio"]{
+	appearance: none;
+	width: $radioBtn-size;
+	height: $radioBtn-size;
+	margin: 0 $radioBtn-size / 2;
+	outline: $radioBtn-size / 2 solid $inactive-color;
+	outline-offset: $radioBtn-size / -2;
+	cursor: pointer;
+	backface-visibility: hidden;
+	border-radius: 50%;
+	transform: rotate(45deg) scale(1);
+	will-change: transform;
+	
+	&:checked {
+		animation: active 1s ease forwards;
+	}
+}
+
+
+@keyframes active {
+	25% {
+		transform: rotate(45deg) scale(1.5);
+	}
+	75% {
+		transform: rotate(45deg) scale(1.25);
+	}
+	50%,100% {
+		transform: rotate(45deg) scale(1);
+		box-shadow:	0 $radioBtn-size / -2 0 0 $active-color,	$radioBtn-size / -2 0 0 0 $active-color;
+		outline-color: $active-color;
+	}
+}*/
