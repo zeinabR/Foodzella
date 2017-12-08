@@ -50,7 +50,7 @@ body {
 }
 
 #navbarToggleExternalContent a:hover {
-    color: #e4e824;
+    color: #EF5C5C;
 }
 
 
@@ -60,7 +60,7 @@ body {
 }
 
 .header {
-    color: #e4e824;
+    color: #EF5C5C;
     display: inline-block;
    
 }
@@ -73,6 +73,51 @@ a.nav-link {
 
 /* start login sec */
 
+.dropdown-menu , .dropdown-item:hover{
+    border-radius: 10px;
+    background-color: #f5d9cc;
+}
+
+ #dropForm {
+    left: 950px;
+    color: #3636ED;
+    top:80%;
+    width: 250px;
+}
+
+/* login button */
+
+#DropdownForm {
+    padding-top: 15px;
+    text-align: center;
+}
+
+#DropdownForm1 {
+    border-radius: 10px;   
+}
+
+.success {
+	font-size: 30px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    /* padding: 200px 0; */
+    z-index: 200;
+    background: rgba(3, 3, 3, 0.7);
+}
+
+.success i {
+	-webkit-animation: rotate .7s ease-in-out;
+	-o-animation: rotate .7s ease-in-out;
+	animation: rotate .7s ease-in-out;
+}
+
+.success a {
+	color: red
+}
 
 
 

@@ -4,7 +4,7 @@
     $pageTitle = 'Restaurants';
 
     // css files for this page
-    $css_files = '<link rel="stylesheet" href="../css/restaurants/restaurants.css">';
+    $css_files = '<link rel="stylesheet" href="../css/categories/restaurants/restaurants.css">';
 
     include '../init.php';
 ?>
