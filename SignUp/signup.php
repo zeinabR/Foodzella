@@ -7,6 +7,7 @@
     $css_files = '<link rel="stylesheet" href="../css/signup/signup.css">';
 
     include '../init.php';
+    include '../connect.php';
 ?>
 
 
