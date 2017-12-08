@@ -1,5 +1,10 @@
 $(function() {
     new WOW().init(); // wow.js for scrolling animation
+$("restaurant").click(function()
+                      {
+    $("R1").show();
+    $(this).hide();
+});
 
  // scroll to sections
 
@@ -9,6 +14,5 @@ $(function() {
         scrollTop: $("#" + object.data("scroll") + "-section").offset().top - 55
     }, 700);
 });
-
 
 });
