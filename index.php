@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- css files -->
-    <link href="CustomStyles.css" rel="stylesheet" />
+    <!-- <link href="CustomStyles.css" rel="stylesheet" /> -->
     
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/home.css" />
-     <link rel='stylesheet' href="css/style.css"/>
+     <!-- <link rel='stylesheet' href="css/style.css"/> -->
     <title>FOODZELLA</title>
 </head>
 
@@ -294,7 +294,7 @@
               </a>
         </div>
      </div>
-    <!------------------------------------------------------------------------------------------------------------------->
+    <!-- ---------------------------------------------------------------------------------------------------------------
     <div class="contianer">
      <div class="row">
             <div class="col-xs-12">
@@ -408,7 +408,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
     </script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script> -->
 
         
 
