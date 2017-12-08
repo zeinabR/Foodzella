@@ -222,7 +222,7 @@ a.nav-link {
 }
 
 .restaurant:hover{
-   show small_images
+   /* show small_images; */
 }
 
 .R1{

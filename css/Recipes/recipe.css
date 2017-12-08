@@ -1,4 +1,4 @@
-body{
+/* body{
     overflow: scroll;
     margin-top: 50px;
 }
@@ -12,7 +12,7 @@ p{
     text-align: center;
     font-size: 60px;
     text-shadow: 3px 2px darkblue;
-}
+} */
 
 .subheader{ 
     margin-bottom:30px;
@@ -31,11 +31,11 @@ p{
     border: 2px solid GoldenRod;
 }
 
-.header{
+/* .header{
     color:cornflowerblue;
     text-align: center;
     font-size: 60px;
-}
+} */
 
 /*
 $radioBtn-size: 32px;
