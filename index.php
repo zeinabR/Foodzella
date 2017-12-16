@@ -37,7 +37,7 @@
                         <a class="nav-link" data-scroll="about"  href="about/about.php">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-scroll="contact" href="index/index.php">CONTACT US</a>
+                        <a class="nav-link " data-scroll="contact" href="index.php">CONTACT US</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -221,7 +221,7 @@
             <div class="container">
                 <div class="restaurants">               
                     <img src="images/restaurant.jpg" class="restaurant" "img-responsive">
-                <a href="#">
+                <a href="RestCategories/Dessert.php">
                     <img src="images/dessert4.jpg" class="small_images R1"></a>
                 <a href="#">
                     <img src="images/health.jpg" class="small_images R2"></a>
