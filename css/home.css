@@ -1,7 +1,7 @@
 
 body {
     margin-top: 55px;
-    overflow: hidden;
+    /* overflow: hidden; */
     overflow: scroll;
 }
 
@@ -9,31 +9,72 @@ body {
 /* start intro section */
 
 .intro {
-     /* background: url(../images/intro-1.jpg); */
-    color: #000;
+    background: url(../images/mix.jpg);
+    color: #FFF;
     height: 100%;
+    width: 100%;
     background-size: cover;
 } 
 
  .intro span,
 .intro h1 {
-    font-size: 30px;
+    font-size: 35px;
     font-family: 'Courgette', cursive;
 }
 
 
 .intro .container div {
-    padding-top: 5%;
+    padding-top: 20%;
+    padding-bottom: 13%;
 }
 
  .intro .overlay {
-     background-color: #eee; 
+    background-color: rgba(3, 3, 3, .65);
     height: 100%;
+    
 } 
+
+.intro p {
+    font-size: 18px;
+}
 
 .intro #Intro {
     text-align: center;
+   
 }
+
+.arrow {
+    text-align: center;
+    color: #ccc;
+    font-size: 40px;
+    cursor: pointer;
+    width: 60px;
+    height: 40px;
+    margin: auto;
+    /* margin-top: 30px; */
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.arrow:hover {
+    color: #eee;
+}
+
+.arrow i {
+    animation: moving 1.5s infinite ease-in-out;
+}
+
+@keyframes moving {
+    0% {
+        transform: translateY(-56px);
+    }
+    100% {
+        transform: translateY(29px);
+    }
+}
+
+
+
 
  /* end intro sec  */
 
@@ -107,7 +148,7 @@ a.nav-link {
     text-align: center;
     /* padding: 200px 0; */
     z-index: 200;
-    background: rgba(3, 3, 3, 0.7);
+    /* background: rgba(3, 3, 3, 0.7); */
 }
 
 .success i {
@@ -119,19 +160,6 @@ a.nav-link {
 .success a {
 	color: red
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* end login sec */
@@ -222,7 +250,7 @@ a.nav-link {
 }
 
 .restaurant:hover{
-   /* show small_images; */
+   /* show: small_images; */
 }
 
 .R1{

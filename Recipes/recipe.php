@@ -1,5 +1,5 @@
 <?php
-
+session_start();
     // page title
     $pageTitle = 'Recipe';
 
@@ -14,7 +14,7 @@
        
        <div class="container">
            <p class="header" style="margin: auto">RECIPE NAME</p>
-           <img src="images/syrian.jpg" class="recipe-image">
+           <img src="../images/syrian.jpg" class="recipe-image">
            <p class="subheader" style="margin: auto">Ingredients :</p>
            <p class="subheader" style="margin: auto">Preparation :</p>
 <!--

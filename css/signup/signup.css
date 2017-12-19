@@ -1,0 +1,107 @@
+
+/* form restaurant */
+
+/* .restaurantt{
+    display:none;
+} */
+/* //////// */
+
+
+.form{
+    background-color: #af2ba5;
+}
+
+.strip{
+    padding-top: 120px;
+    padding-bottom: 100px;
+}
+ #dropForm {
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: auto;
+    color: white;
+    width: 700px;
+    padding-top: 40px;
+    border-radius: 10px;
+   
+ }
+
+ .form-group{
+     padding: 10px;
+     width: 500px;
+     margin: auto;
+     color: black;
+    
+ }
+
+ .form-group input, .form-group select{
+    border-radius: 15px;
+ }
+
+ .form-a{
+     
+     margin: auto;
+     padding-bottom: 20px;
+
+ }
+
+ .form-a a{
+    color: white;
+ }
+
+ .form-a a:hover{
+     color: red;
+     text-decoration: none;
+ }
+
+#DropdownForm {
+    padding-top: 15px;
+    text-align: center;
+    border-radius: 10px;   
+}
+
+#button {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.submitbutton{
+    width: 200px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+center{
+    color: yellow;
+    font-family: 'Courgette', cursive;;
+}
+.success {
+	font-size: 30px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 200px 0;
+    z-index: 200;
+    background: rgba(3, 3, 3, 0.7);
+}
+
+.success i {
+	-webkit-animation: rotate .7s ease-in-out;
+	-o-animation: rotate .7s ease-in-out;
+	animation: rotate .7s ease-in-out;
+}
+
+
+.error{
+   
+    padding-top: 80px;
+    background-color: #af2ba5;
+}
+
+.alert{
+    margin-bottom: 0;
+    margin: auto;
+    width: 400px;
+}
