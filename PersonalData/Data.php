@@ -4,237 +4,104 @@
 
     <?php
 
-// session_start();
+session_start();
 // page title
     $pageTitle = 'Information';
     
     // css files for this page
-    $css_files = '<link rel="stylesheet" href="../css/signup/signup.css">';
+    $css_files = '<link rel="stylesheet" href="../css/Data/data.css">';
 
-    include "valid.php "; 
+    // include "valid.php "; 
     // $Login = 'LOG IN';
-    include '../init.php';
     
-    // include '../connect.php';
+    
+    include '../connect.php';
+
     $Cust=$_SESSION['Cust'];
+    $Gender=$_SESSION['Gender'];
 
-$stmt=$con->prepare("SELECT * FROM `administrator` WHERE ID=? LIMIT 1");
-$stmt->execute(array($Cust[0]));
-$r=$stmt->fetchAll();
-
-if($stmt){
-    $_POST['Name'] = $Cust[0];
-
+   
+if($Gender == 'manager'){
+     $js_files = '<script src="../js/Gender.js"></script>';
 }
 
+    // $stmt=$con->prepare("SELECT * FROM $Gender WHERE ID=? LIMIT 1");
+    // $stmt->execute(array($Cust[0]));
+    // $r=$stmt->fetchAll();
 
-            
-    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-    //     $Name = filter_var($_POST['Name'], FILTER_SANITIZE_STRING);
-    //     $Phone = filter_var($_POST['Phone'], FILTER_SANITIZE_NUMBER_INT);
-    //     $Email = filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
-    //     $Pass = filter_var($_POST['Password'], FILTER_SANITIZE_STRING);
-    //     $City = filter_var($_POST['City'], FILTER_SANITIZE_STRING);
-    //     $Street = filter_var($_POST['Street'], FILTER_SANITIZE_STRING);
-    //     $Manager = filter_var($_POST['Manager'], FILTER_SANITIZE_STRING);       
-          
-    //     // restaurant's info
+        $Name = filter_var($_POST['Name'], FILTER_SANITIZE_STRING);
+        $Phone = filter_var($_POST['Phone'], FILTER_SANITIZE_NUMBER_INT);
+        $Email = filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
+        $Pass = filter_var($_POST['Password'], FILTER_SANITIZE_STRING);
+        $City = filter_var($_POST['City'], FILTER_SANITIZE_STRING);
+        $Street = filter_var($_POST['Street'], FILTER_SANITIZE_STRING);
 
-    //     $Rname = filter_var($_POST['Rname'], FILTER_SANITIZE_STRING);
-    //     $Rphone = filter_var($_POST['contactNo'], FILTER_SANITIZE_NUMBER_INT);
-    //     $Category = filter_var($_POST['Category'], FILTER_SANITIZE_STRING);
-    //     $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
-    //     $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
-    //     $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
-    //     $Hours = filter_var($_POST['Hours'], FILTER_SANITIZE_NUMBER_INT);
-    //     $Services = filter_var($_POST['Services'], FILTER_SANITIZE_STRING);
-    //     $tables = filter_var($_POST['tables'], FILTER_SANITIZE_NUMBER_INT);
-    //     $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
-    //     $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
-    //     $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
-        
-    //     $Errors;
-    //     if (empty($Name)) {
-    //         $Errors[] = 'Name Not Found';
-    //     }
-    //     if (empty($Phone)) {
-    //         $Errors[] = 'Phone Not Found';
-    //     }
-    //     if (empty($Pass)) {
-    //         $Errors[] = 'Password Not Found';
-    //     }
-    //     if (empty($City)) {
-    //         $Errors[] = 'City Not Found';
-    //     }
-    //     if (empty($Street)) {
-    //         $Errors[] = 'Street Not Found';
-    //     }
-
-    //     if (empty($Email)) {
-    //         $Errors[] = 'Email Not Found';
-    //     }
+        $Errors;
         
 
-    // if (empty($Errors)) {
+    if (empty($Errors)) {
     
-    //     // check not an admin
-    //     $admin = $con->prepare("SELECT Name FROM administrator WHERE email = ? LIMIT 1");
-    //     $admin->execute(array($Email));
-    //     $Aname = $admin->fetch();
-    //     $c2 = $admin->rowCount();
-    //     if($c2 == 0){
-
-    //         if($Manager == 'no'){
-
-    //             // check unique email
-    //             $stmt = $con->prepare("SELECT Name FROM customer WHERE email = ? LIMIT 1");
-    //             $stmt->execute(array($Email));
-    //             $rowName = $stmt->fetch();
-    //             $c = $stmt->rowCount();
-
-    //             // check unique phone no
-    //             $stmt = $con->prepare("SELECT PhoneNo FROM customer");
-    //             $phon[] = $stmt->fetch();
-
-    //             if ($c == 0 && !in_array($Phone,$phon)) {
-                
-    //                     $state = $con->prepare("INSERT INTO customer(Name, Password, PhoneNo, Email ,City, Street) VALUES(:Sname, :Spass, :Stel, :Semail, :Scity, :Sstreet)");
-    //                     $state->execute(array(
-    //                         'Sname' => $Name,
-    //                         'Spass' => $Pass,
-    //                         'Stel' => $Phone,
-    //                         'Semail' => $Email,
-    //                         'Scity' => $City,
-    //                         'Sstreet' => $Street,
-    //                         ));
-                    
-    //                     if ($state) {  
-    //                             echo '<div class="success text-success">
-    //                             <i class="fa fa-check fa-2x"></i>
-    //                             Welcome ';  echo '<strong>' . $Name . '</strong>';
-    //                             echo '</div>';  
-    //                             $Login = $Name;
-    //                             header("Location:https://www.formget.com/app/");
-    //                             // header("refresh:1; url=../index.php");
-    //                         }
-                            
-    //                     else{
-    //                         $Errors[] = 'Failed to Register ';
-    //                     } 
-    //                 }
-                    
-                
-    //             else {
-    //                 $Errors[] = 'You Are Registered Once';
-    //             }
-    //         }
-
-
-    //         else  {
-
-    //             $s = $con->prepare("SELECT Name FROM manager WHERE email = ? LIMIT 1");
-    //             $s->execute(array($Email));
-    //             $rowName1 = $s->fetch();
-    //             $c1 = $s->rowCount();
+        // $Gender=$_SESSION['Gender'];
+        // $Cust=$_SESSION['Cust'];
+        $stmt = $con->prepare("UPDATE $Gender SET `Name`= ? , PhoneNo=? , Email=? , `Password`=? WHERE ID=?");
+        $stmt->execute(array(
             
-    //             // check unique phone no
+            $Name,
+            $Phone,
+            $Email,
+            $Pass,
+            $Cust[0],
+        
+        ));
 
-    //             $s = $con->prepare("SELECT Phone_Num FROM manager");
-    //             $p[] = $s->fetch();
-                
+        $stmt=$con->prepare("SELECT * FROM $Gender WHERE ID=? LIMIT 1");
+        $stmt->execute(array($Cust[0]));
+        $r=$stmt->fetchAll();
 
-    //             if ($c1 == 0 && !in_array($Phone,$p)) {
-                
-    //                 $state1 = $con->prepare("INSERT INTO manager(Name, Password, Phone_Num, Email ,City, Street) VALUES(:Sname, :Spass, :Stel, :Semail, :Scity, :Sstreet)");
-    //                 $state1->execute(array(
-    //                     'Sname' => $Name,
-    //                     'Spass' => $Pass,
-    //                     'Stel' => $Phone,
-    //                     'Semail' => $Email,
-    //                     'Scity' => $City,
-    //                     'Sstreet' => $Street,
-    //                     ));
+        $_SESSION['Cust']=$r[0];
+        $Cust= $_SESSION['Cust'];
+        $_SESSION['LOGIN'] =$Cust[1];
 
-    //                 if(!$state1){
-    //                     $Errors[] = 'Failed to Register ';   
-    //                 }
+        if($stmt && ($Gender=='customer' || $Gender=='administrator')){
 
-    //                 else{
+            echo '<div class="success text-success">
+                <i class="fa fa-check fa-2x"></i>
+                 ';  echo '<strong>' . 'Your Information Updated Successfully' . '</strong>';
+                echo '</div>';
+            header("refresh:2; url=http://localhost/dashboard/FOODZELLA/Home/index.php");
 
-    //                     $state1=$con->prepare("SELECT Mgr_ID FROM manager WHERE Email = ? LIMIT 1");
-    //                     $state1->execute(array($Email));
-    //                     $ID=$state1->Fetch();
-                        
-    //                     $s = $con->prepare("SELECT Contact_No FROM restaurant");
-    //                     $conta[] = $s->fetch();
+        }
 
-    //                     if ($state1 && !in_array($Rphone,$conta)) {  
-    //                         $state = $con->prepare("INSERT INTO restaurant (Name, Contact_No, Category, No_of_Items ,RCity, RStreet,WorkHr,Services,No_available_Tables,Mgr_ID) VALUES(:Rname, :Rtel, :RCategory, :Ritems,:Rcity, :Rstreet,:workHr,:servies,:notables,:Mgrid)");
-    //                         $state->execute(array(
-    //                             'Rname' => $Rname,
-    //                             'Mgrid' => $ID[0],
-    //                             'RCategory' => $Category,
-    //                             'Rtel' => $Rphone,
-    //                             'Ritems' => $ItemsNo,
-    //                             'Rcity' => $Rcity,
-    //                             'Rstreet' => $Rstreet,
-    //                             'servies' =>$Services,
-    //                             'workHr' =>$Hours,
-    //                             'notables' =>$tables,
-    //                             ));
-                    
-    //                     }
-    //                     else {
-    //                         $Errors[] = 'Failed to Register Your Restaurant';
-    //                     }
+        else if($stmt && $Gender=='manager' ){
 
-                    
-    //                     if ($state) {  
-    //                             echo '<div class="success text-success">
-    //                             <i class="fa fa-check fa-2x"></i>
-    //                             Welcome ';  echo '<strong>' . $Name . '</strong>';
-    //                             echo '</div>';  
-    //                             $Login = $Name;
-    //                         }
-                            
-    //                     }   
-    //                 }
+            // echo '<div class="success text-success">
+            // <i class="fa fa-check fa-2x"></i>
+            //  ';  echo '<strong>' . 'Your Information Updated Successfully' . '</strong>';
+            // echo '</div>';
+            header("Location:Rest.php");
 
-    //             else{
-    //                 $Errors[] = 'You Are Registered Once';
-    //             }
-    //         }
-    //     } 
-    //     else{
-    //         $Errors[] = 'Sorry You Are An Admin';
-    //     }  
-       
-    // }
-    
-    // if (isset($Errors)) {
-    //     echo '<div class="error">';
-    //     foreach ($Errors as $Error) {  
-    //         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    //             <span aria-hidden="true">&times;</span>
-    //         </button>';
-    //             echo '<strong>' . $Error . '</strong>';
-    //             echo '</div>';
-    //     }
-    //     echo '</div>';
-    // }
-    // }
-?>
+        }
 
-<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+        else{
 
-<!-- <figure class="page-head-image">
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>';
+                        echo '<strong>' . 'Failed To Update' . '</strong>';
+                        echo '</div>';
+        }
+    }
 
-<div style="text-align: center;">
-        <img src="../images/eating.jpg" class="img-responsive" alt="eating" width="304" height="236" > 
-</div>
-</figure> -->
+}
+include '../init.php';
+            
+   ?>
+
+
 <div class="form ">
     <div class="overlay">
         <div class="strip">
@@ -244,48 +111,91 @@ if($stmt){
 
                         <div class=" form-group">
                             <label for="Name">Name</label>
-                            <input type="text" class="form-control" id="namellabel"  name="Name" required>
+                            <input type="text" class="form-control" minlength="3" maxlength="50" id="namellabel"  name="Name"
+                            
+                            <?php
+                                echo'
+                                value=' . $Cust[1]  ;
+                            
+                            ?>
+                              required>
                         </div>
 
                         <div class=" form-group">
                             <label for="Phone number">Phone number</label>
-                            <input type="num" class="form-control"  minlength="8" maxlength="11" id="phonelabel" placeholder="Your phone number" name="Phone" required>
+                            <input type="num" class="form-control"  minlength="8" maxlength="11" id="phonelabel" placeholder="Your phone number" name="Phone" 
+                            
+                            <?php
+                    
+                                echo'
+                                value=' . $Cust[2]  ;
+                            
+                          
+                            ?>
+
+                             required>
                         </div>
 
                         <div class=" form-group">
                             <label for="Email">Email address</label>
-                            <input type="email" class="form-control"  maxlength="50" id="emaillabel" placeholder="email@example.com" name="Email" required>
+                            <input type="email" class="form-control"  maxlength="50" id="emaillabel" placeholder="email@example.com" name="Email"
+                            
+                            <?php
+                          
+                                echo'
+                                value=' . $Cust[3]  ;
+                            
+                         
+                            ?>
+
+                              required>
                         </div>
 
                         <div class="form-group">
                             <label for="pass">Password</label>
-                            <input type="password" class="form-control" minlength="8"  id="pass" placeholder="Password" name="Password" required>
+                            <input type="password" class="form-control" minlength="8"  id="pass" placeholder="Password" name="Password" 
+                            
+                            <?php
+                          
+                                echo'
+                                value=' . $Cust[4] ;
+                            
+                            
+                            ?>
+
+                             required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group city">
                             <label for="City">City</label>
-                            <input type="text" class="form-control" minlength="3"  id="citylabel" placeholder="cairo" name="City" required>
+                            <input type="text" class="form-control " minlength="3"  id="citylabel" placeholder="cairo" name="City" 
+                            
+                            <?php
+                            if($Gender == 'customer' || $Gender== 'manager'){
+                                echo'
+                                value=' . $Cust[5] ;
+                            
+                            }
+                            ?>
+
+                            >
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group street">
                             <label for="street">Street</label>
-                            <input type="text" class="form-control" minlength="3"  id="streetlabel" placeholder="Faisal" name="Street" required>
-                        </div>
+                            <input type="text" class="form-control " minlength="3"  id="streetlabel" placeholder="Faisal" name="Street" 
+                            
+                            <?php
+                            if($Gender == 'customer' || $Gender== 'manager'){
+                                echo'
+                                value=' . $Cust[6] ;
+                            
+                            }
+                            ?>
 
-                        <div class="custom-controls-stacked form-group">
-                        <div for="radios">Do You Manage a Restaurant?</div><br>
-                                <label class="custom-control custom-radio">
-                                    <input id="radio1" name="Manager" type="radio" class="custom-control-input" value="yes" required>
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">Yes</span>
-                                </label>
-                                <label class="custom-control custom-radio">
-                                    <input id="radio2" name="Manager" type="radio" class="custom-control-input" value="no" required checked>
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">No</span>
-                                </label>
+                            >
                         </div>
-                        
+      
                     <!-- restaurant's information
 
                         <div class="restaurantt">
@@ -387,7 +297,7 @@ if($stmt){
 
 
 <?php 
-    $js_files = '<script src="../js/signup.js"></script>';
+    // $js_files = '<script src="../js/signup.js"></script>';
     
     include '../' . $tmpl . 'footer.php';
 

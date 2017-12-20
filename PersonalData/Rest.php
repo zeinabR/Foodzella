@@ -1,16 +1,34 @@
 <?php
 session_start();
 // page title
-    $pageTitle = 'SignUp';
+    $pageTitle = 'Restaurant Information';
     
     // css files for this page
-    $css_files = '<link rel="stylesheet" href="../css/signup/signup.css">';
+    $css_files = '<link rel="stylesheet" href="../css/Data/data.css">';
 
     // include "validate.php "; 
     // $Login = 'LOG IN';
    
     
     include '../connect.php';
+
+    $Cust=$_SESSION['Cust'];
+    $stmt=$con->prepare("SELECT * FROM restaurant WHERE Mgr_ID=? LIMIT 1");
+    $stmt->execute(array($Cust[0]));
+    $R=$stmt->fetchAll();
+
+    // $_SESSION['Rname']=$R[0][1];
+    // $_SESSION['Rphone']=$R[0][3];
+    // $_SESSION['Rcateg']=$R[0][0];
+    $_SESSION['RitemNo']=$R[0][6];
+    $_SESSION['MgrId']=$Cust[0];
+    $_SESSION['RID']=$R[0][2];
+    // $_SESSION['Rcity']=$Rcity;
+    // $_SESSION['Rstreet']=$Rstreet;
+    // $_SESSION['Rhours']=$Hours;
+    // $_SESSION['Rservice']=$Services;
+    // $_SESSION['Rtables']=$tables;
+
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -27,16 +45,7 @@ session_start();
     // $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
     // $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
     
-    $_SESSION['Rname']=$Rname;
-    $_SESSION['Rphone']=$Rphone;
-    $_SESSION['Rcateg']=$Category;
-    $_SESSION['RitemNo']=$ItemsNo;
-    $_SESSION['Rcity']=$Rcity;
-    $_SESSION['Rstreet']=$Rstreet;
-    $_SESSION['Rhours']=$Hours;
-    $_SESSION['Rservice']=$Services;
-    $_SESSION['Rtables']=$tables;
-
+    
     // $s = $con->prepare("SELECT Name FROM manager WHERE email = ? LIMIT 1");
     // $s->execute(array($Email));
     // $rowName1 = $s->fetch();
@@ -44,13 +53,48 @@ session_start();
 
     // check unique phone no
 
-    $s = $con->prepare("SELECT Contact_No FROM restaurany");
-    $p = $s->fetchAll();
+    // $s = $con->prepare("SELECT Contact_No FROM restaurant");
+    // $p = $s->fetchAll();
     
 
-    if (!in_array($Rphone,$p)) {
+    // if (!in_array($Rphone,$p)) {
     
-        header("Location: ItemForm.php");
+        $stmt = $con->prepare("UPDATE restaurant SET `Name`= ? , Contact_No=? , Category=? , RCity=? ,RStreet=? , Mgr_ID=? ,No_of_Items=? ,WorkHr=? ,Services=?, No_available_Tables=? WHERE Rest_ID=?");
+        $stmt->execute(array(
+            
+            $Rname,
+            $Rphone,
+            $Category,
+            $Rcity,
+            $Rstreet,
+            $Cust[0],
+            $ItemsNo,
+            $Hours,
+            $Services,
+            $tables,
+            $R[2],
+        ));
+
+        if($stmt){
+
+            // $stmt=$con->prepare("SELECT No_of_Items FROM restaurant WHERE Mgr_ID=? LIMIT 1");
+            // $stmt->execute(array($Cust[0]));
+            // $ITEMno=$stmt->fetch();
+            $_SESSION['RitemNo']=$ItemsNo;
+        
+            header("Location:Item.php");
+            
+        }
+        else{
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>';
+                echo '<strong>' . 'Falied to update your restaurant' . '</strong>';
+                echo '</div>';
+        }
+
+        // header("Location: Item.php");
         // exit();
         // $state1 = $con->prepare("INSERT INTO manager(Name, Password, Phone_Num, Email ,City, Street) VALUES(:Sname, :Spass, :Stel, :Semail, :Scity, :Sstreet)");
         // $state1->execute(array(
@@ -116,25 +160,25 @@ session_start();
         //         }
                 
                 
-                if (isset($Errors)) {
-                    echo '<div class="error">';
-                    foreach ($Errors as $Error) {  
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>';
-                            echo '<strong>' . $Error . '</strong>';
-                            echo '</div>';
-                    }
-                    echo '</div>';
-                }
+                // if (isset($Errors)) {
+                //     echo '<div class="error">';
+                //     foreach ($Errors as $Error) {  
+                //         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                //             <span aria-hidden="true">&times;</span>
+                //         </button>';
+                //             echo '<strong>' . $Error . '</strong>';
+                //             echo '</div>';
+                //     }
+                //     echo '</div>';
+                // }
 
         //     }   
-        }
+        // }
 
-    else{
-        $Errors[] = 'Restaurant Already Exists';
-    }
+    // else{
+    //     $Errors[] = 'Restaurant Already Exists';
+    // }
 }
 
 include '../init.php';
@@ -148,61 +192,146 @@ include '../init.php';
                             <div class="restaurantt">
                                 <div class=" form-group ">
                                     <label for="Name">Name</label>
-                                    <input type="text" class="form-control"  maxlength="50" id="name" placeholder="Restaurant's Name" name="Rname" required >
+                                    <input type="text" class="form-control"  maxlength="50" id="name" placeholder="Restaurant's Name" name="Rname" 
+                                    
+                                    <?php
+                                    echo 'value=' . $R[0]['Name'];
+                                    ?>
+                                    
+                                    required >
                                 </div>
     
                                 <div class=" form-group ">
                                     <label for="Phone number">Contact number</label>
-                                    <input type="num" class="form-control"  minlength="8" maxlength="11" id="phone" placeholder="Restaurant's phone number" name="contactNo" required >
+                                    <input type="num" class="form-control"  minlength="8" maxlength="11" id="phone" placeholder="Restaurant's phone number" name="contactNo" 
+                                    
+                                    <?php
+                                    echo 'value=' . $R[0][3];
+                                    ?>
+                                    
+                                    required >
                                 </div>
     
                                 <div class=" form-group ">
                                     <label for="Ctegory">Category</label>
                                     <select class="custom-select"  name="Category" required >
-                                        <option selected>Choose Restaurant's Cateory</option>
-                                        <option value="Dessert">Dessert</option>
-                                        <option value="Fast Food">Fast Food</option>
-                                        <option value="Eastern Food">Eastern Food</option>
-                                        <option value="Healthy food">Healthy food</option>
-                                        <option value="Pizza">Pizza</option>
-                                        <option value="Syrian Food">Syrian Food</option>
+                                        <option selected>  
+                                        <?php
+                                        echo  $R[0][0];
+                                        ?>
+                                        </option>
+                                        <?php
+                                        if($R[0][0] != 'Dessert'){
+                                            echo '                                     
+                                            <option value="Dessert">Dessert</option> ' ;                                          
+                                        }
+                                        if($R[0][0] != 'Fast Food'){
+                                            echo'
+                                        <option value="Fast Food">Fast Food</option>';
+                                        }
+                                        if($R[0][0] != 'Eastern Food'){
+                                            echo'
+                                        <option value="Eastern Food">Eastern Food</option>';
+                                        }
+                                        if($R[0][0] != 'Healthy Food'){
+                                            echo'
+                                        <option value="Healthy food">Healthy food</option>';
+                                        }
+                                        if($R[0][0] != 'Pizza'){
+                                            echo'
+                                        <option value="Pizza">Pizza</option>';
+                                        }
+                                        if($R[0][0] != 'Syrian Food'){
+                                            echo'
+                                        <option value="Syrian Food">Syrian Food</option>';
+                                        }
+                                        ?>
                                 </select>                
                                 </div>
     
                                 <div class="form-group ">
                                     <label for="items">No. of Items</label>
-                                    <input type="number" class="form-control" minlength="8"  id="items" placeholder="Items' No." name="ItemsNo" required >
+                                    <input type="number" class="form-control" minlength="8"  id="items" placeholder="Items' No." name="ItemsNo"
+                                    
+                                    <?php
+                                    echo 'value=' . $R[0][6];
+                                    ?>
+
+                                    required >
                                 </div>
     
                                 <div class="form-group ">
                                     <label for="City">Restaurant's City</label>
-                                    <input type="text" class="form-control" minlength="3"  id="city" placeholder="City" name="Rcity" required>
+                                    <input type="text" class="form-control" minlength="3"  id="city" placeholder="City" name="Rcity" 
+                                    
+                                    <?php
+                                    echo 'value=' . $R[0][4];
+                                    ?>
+                                    
+                                    required>
                                 </div>
     
                                 <div class="form-group">
                                     <label for="street">Restaurant's Street</label>
-                                    <input type="text" class="form-control" minlength="3"  id="street" placeholder="Street" name="Rstreet" required>
+                                    <input type="text" class="form-control" minlength="3"  id="street" placeholder="Street" name="Rstreet" 
+                                    
+                                    <?php
+                                    echo 'value=' . $R[0][5];
+                                    ?>
+                                    
+                                    required>
                                 </div>
     
                                 <div class="form-group ">
                                     <label for="hours">Work Hours</label>
-                                    <input type="number" class="form-control" id="hours" placeholder="Hours" name="Hours" value="12" required>
+                                    <input type="number" class="form-control" id="hours" placeholder="Hours" name="Hours" 
+                                    
+                                    
+                                    <?php
+                                    echo 'value=' . $R[0][8];
+                                    ?>
+                                    
+                                    required>
                                 </div>
     
                                 <div class=" form-group ">
                                     <label for="services">Services</label>
                                     <select class="custom-select"  name="Services" required>
-                                    <option selected>Choose Service</option>
-                                    <option value="Table ">Table Reservation</option>
-                                    <option value="Delivery">Delivery</option>
-                                    <option value="Both">Both</option>
+                                    <option selected>
+
+                                    <?php
+                                    echo $R[0][9];
+                                    ?>
+
+                                    </option>
+
+                                    <?php
+                                    if($R[0][9] != 'Table'){
+                                        echo'
+                                    <option value="Table ">Table Reservation</option>';
+                                    }
+                                    if($R[0][9] != 'Delivery'){
+                                        echo'
+                                    <option value="Delivery">Delivery</option>';
+                                    }
+                                    if($R[0][9] != 'Both'){
+                                        echo'
+                                    <option value="Both">Both</option>';
+                                    }
+                                    ?>
                                     </select>   
                                 </div>
     
     
                                 <div class="form-group ">
                                     <label for="tables">No. of Tables</label>
-                                    <input type="number" class="form-control" minlength="4" id="table" placeholder="Tables" name="tables" required>
+                                    <input type="number" class="form-control" minlength="4" id="table" placeholder="Tables" name="tables"
+                                    
+                                    <?php
+                                    echo 'value=' . $R[0][10];
+                                    ?>
+                                    
+                                    required>
                                 </div>
     
     

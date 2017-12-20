@@ -11,56 +11,105 @@
     include '../connect.php';
 
             
-    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-    //     $Name = filter_var($_POST['Name'], FILTER_SANITIZE_STRING);
-    //     $Phone = filter_var($_POST['Phone'], FILTER_SANITIZE_NUMBER_INT);
-    //     $Email = filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
-    //     $Pass = filter_var($_POST['Password'], FILTER_SANITIZE_STRING);
-    //     $City = filter_var($_POST['City'], FILTER_SANITIZE_STRING);
-    //     $Street = filter_var($_POST['Street'], FILTER_SANITIZE_STRING);
-    //     $Manager = filter_var($_POST['Manager'], FILTER_SANITIZE_STRING);       
+        $Name = filter_var($_POST['Name'], FILTER_SANITIZE_STRING);
+        $Phone = filter_var($_POST['Phone'], FILTER_SANITIZE_NUMBER_INT);
+        $Email = filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
+        $Pass = filter_var($_POST['Password'], FILTER_SANITIZE_STRING);
+        $City = filter_var($_POST['City'], FILTER_SANITIZE_STRING);
+        $Street = filter_var($_POST['Street'], FILTER_SANITIZE_STRING);
+        // $Manager = filter_var($_POST['Manager'], FILTER_SANITIZE_STRING);       
           
-    //     // restaurant's info
+        // restaurant's info
 
-    //     // $Rname = filter_var($_POST['Rname'], FILTER_SANITIZE_STRING);
-    //     // $Rphone = filter_var($_POST['contactNo'], FILTER_SANITIZE_NUMBER_INT);
-    //     // $Category = filter_var($_POST['Category'], FILTER_SANITIZE_STRING);
-    //     // $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
-    //     // $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
-    //     // $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
-    //     // $Hours = filter_var($_POST['Hours'], FILTER_SANITIZE_NUMBER_INT);
-    //     // $Services = filter_var($_POST['Services'], FILTER_SANITIZE_STRING);
-    //     // $tables = filter_var($_POST['tables'], FILTER_SANITIZE_NUMBER_INT);
-    //     // $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
-    //     // $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
-    //     // $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
+       
+        // $Rname = filter_var($_POST['Rname'], FILTER_SANITIZE_STRING);
+        // $Rphone = filter_var($_POST['contactNo'], FILTER_SANITIZE_NUMBER_INT);
+        // $Category = filter_var($_POST['Category'], FILTER_SANITIZE_STRING);
+        // $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
+        // $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
+        // $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
+        // $Hours = filter_var($_POST['Hours'], FILTER_SANITIZE_NUMBER_INT);
+        // $Services = filter_var($_POST['Services'], FILTER_SANITIZE_STRING);
+        // $tables = filter_var($_POST['tables'], FILTER_SANITIZE_NUMBER_INT);
+        // $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
+        // $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
+        // $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
         
-    //     $Errors;
-    //     if (empty($Name)) {
-    //         $Errors[] = 'Name Not Found';
-    //     }
-    //     if (empty($Phone)) {
-    //         $Errors[] = 'Phone Not Found';
-    //     }
-    //     if (empty($Pass)) {
-    //         $Errors[] = 'Password Not Found';
-    //     }
-    //     if (empty($City)) {
-    //         $Errors[] = 'City Not Found';
-    //     }
-    //     if (empty($Street)) {
-    //         $Errors[] = 'Street Not Found';
-    //     }
+        $Errors;
+        if (empty($Name)) {
+            $Errors[] = 'Name Not Found';
+        }
+        if (empty($Phone)) {
+            $Errors[] = 'Phone Not Found';
+        }
+        if (empty($Pass)) {
+            $Errors[] = 'Password Not Found';
+        }
+        if (empty($City)) {
+            $Errors[] = 'City Not Found';
+        }
+        if (empty($Street)) {
+            $Errors[] = 'Street Not Found';
+        }
 
-    //     if (empty($Email)) {
-    //         $Errors[] = 'Email Not Found';
-    //     }
+        if (empty($Email)) {
+            $Errors[] = 'Email Not Found';
+        }
         
 
-    // if (empty($Errors)) {
+    if (empty($Errors)) {
     
-    //     // check not an admin
+        $Gender=$_SESSION['Gender'];
+        $Cust=$_SESSION['Cust'];
+        $stmt = $con->prepare("UPDATE $Gender SET `Name` = ? WHERE ID = ?");
+        $stmt->execute(array(
+            
+            $Name,
+            // $Phone,
+            // $Email,
+            // $Pass,
+            $Cust[0],
+        
+        ));
+
+
+        if($stmt && ($Gender=='customer' || $Gender=='administrator')){
+
+            echo '<div class="success text-success">
+                <i class="fa fa-check fa-2x"></i>
+                 ';  echo '<strong>' . 'Your Information Updated Successfully' . '</strong>';
+                echo '</div>';
+            header("refresh:2; url=http://localhost/dashboard/FOODZELLA/Home/index.php");
+
+        }
+
+        else if($stmt && $Gender=='manager' ){
+
+            // echo '<div class="success text-success">
+            // <i class="fa fa-check fa-2x"></i>
+            //  ';  echo '<strong>' . 'Your Information Updated Successfully' . '</strong>';
+            // echo '</div>';
+            header("Location:Rest.php");
+
+        }
+
+        else{
+
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>';
+                        echo '<strong>' . 'Failed To Update' . '</strong>';
+                        echo '</div>';
+        }
+    }
+
+}
+
+
+        // check not an admin
     //     $admin = $con->prepare("SELECT Name FROM administrator WHERE email = ? LIMIT 1");
     //     $admin->execute(array($Email));
     //     $Aname = $admin->fetch();

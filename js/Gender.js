@@ -1,0 +1,7 @@
+$(function() {
+
+$('.city, .street').show();
+
+
+
+});
