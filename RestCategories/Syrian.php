@@ -1,21 +1,22 @@
 <?php
-  session_start();
+session_start();
+
     // page title
-    $pageTitle = 'Dessert';
+    $pageTitle = 'Syrian';
 
     // css files for this page
-    $css_files = '<link rel="stylesheet" href="../css/RestCateg/Dessert.css">';
+    $css_files = '<link rel="stylesheet" href="../css/RestCateg/Syrian.css">';
 
     include '../init.php';
     include '../connect.php';
 
-  
+
 
     $stmt = $con->prepare("SELECT * FROM restaurant WHERE Category = ? ");
-    $stmt ->execute(array('Dessert'));
+    $stmt ->execute(array('Syrian'));
      $Rnames = $stmt->fetchAll();
      $c1 = $stmt->rowCount();
-    
+
 
 echo'
 
@@ -27,17 +28,17 @@ echo'
                
                 for($i=0 ; $i<$c1 ; $i++)
             {
-               $Mixed = $Rnames[$i];
-               $Text = json_encode($Mixed);
-               $RequestText = urlencode($Text);
-                
+                $Mixed = $Rnames[$i];
+                $Text = json_encode($Mixed);
+                $RequestText = urlencode($Text);
+
                 echo'
-            <a href="../Restaurants/Dessert.php?cluster=' . $RequestText . ' " class="list-group-item " >
+            <a href="../Restaurants/Syrian.php?cluster=' . $RequestText . ' " class="list-group-item " >
                 <h4 class="list-group-item-heading " >' . $Rnames[$i][1] . '</h4>
                 <p class="list-group-item-text">' . $Rnames[$i][5] . '</p>
             </a>';
             }
-          
+           
         echo'
             </div>
     </div>
