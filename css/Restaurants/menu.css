@@ -21,9 +21,9 @@
 }
 
 .list-group{
-    padding-top: 50px;
-    width: 800px;
-    margin: auto;
+    padding-bottom: 50px;
+    width: 500px;
+    /* margin: auto; */
     /* background-color: rgba(180, 177, 177, 0.6); */
 }
 

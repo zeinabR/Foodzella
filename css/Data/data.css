@@ -26,9 +26,9 @@
  }
 
  .form-group{
-     padding: 10px;
-     width: 500px;
-     margin: auto;
+     padding-bottom: 10px;
+     width: 300px;
+     /* margin: auto; */
      color: black;
     
  }
@@ -104,4 +104,9 @@ center{
     margin-bottom: 0;
     margin: auto;
     width: 400px;
+}
+
+
+.city , .street{
+    display: none;
 }

@@ -1,0 +1,51 @@
+
+.Title{
+    font-family: 'Courgette', cursive;
+    font-size: 60px;
+    text-align: center;
+    color: rgb(251, 143, 139);
+    padding-bottom: 70px;
+}
+
+#Rest-section{
+    background: url(../../images/Restaurants/FastFood.jpg);
+    color: #FFF;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+
+.intro .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    
+} 
+
+#Intro{
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
+
+.content {
+    float:right;
+}
+ p {
+    width: 300px;
+}
+.button {
+    float: left;
+    padding-left: 150px;
+    text-align: center;
+}
+ button a {
+    color: #02fd2f;
+    text-decoration: none;
+}
+
+ button a:hover {
+    color: white;
+    text-decoration: none;
+}
+.clear{
+    clear: both;
+}

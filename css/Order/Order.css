@@ -1,42 +1,44 @@
 
-/* form restaurant */
-
-/* .restaurantt{
-    display:none;
-} */
-/* //////// */
-
-
 .form{
-    background-color: #af2ba5;
+    background: url("../../images/Buffet_New.jpg");
+    background-size: cover;
 }
+.overlay {
+    background-color: rgba(3, 3, 3, .6);
+    height: 100%;
+    
+} 
 
 .strip{
     padding-top: 120px;
     padding-bottom: 100px;
 }
+
+.Title{
+    text-align: center;
+    padding-bottom: 50px;
+    color: white;
+    font-family: cursive;
+}
  #dropForm {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(236, 232, 232, 0.2);
     margin: auto;
     color: white;
-    width: 700px;
-    padding-top: 40px;
+    width: 600px;
+    padding-top: 20px;
     border-radius: 10px;
    
  }
 
  .form-group{
-     padding: 10px;
-     width: 500px;
-     margin: auto;
-     color: black;
+     padding: 20px;
+     width: 320px;
     
  }
 
- .form-group input, .form-group select{
-    border-radius: 15px;
+ label{
+     padding-right: 5px;
  }
-
  .form-a{
      
      margin: auto;
@@ -58,22 +60,12 @@
     text-align: center;
     border-radius: 10px;   
 }
-
-#button {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-}
 .submitbutton{
     width: 200px;
     margin: auto;
-    border-radius: 15px;
 }
 
-center{
-    color: yellow;
-    font-family: 'Courgette', cursive;;
-}
+
 .success {
 	font-size: 30px;
     position: fixed;
@@ -95,13 +87,11 @@ center{
 
 
 .error{
-   
+    width: 300px;
+    margin: auto;
     padding-top: 80px;
-    background-color: #af2ba5;
 }
 
-.alert{
-    margin-bottom: 0;
-    margin: auto;
-    width: 400px;
+.reserve{
+    display: none;
 }

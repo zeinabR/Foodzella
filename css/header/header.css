@@ -31,7 +31,7 @@ a.nav-link {
 
 /* start login sec */
 
-.dropdown-menu , .dropdown-item:hover{
+/* .dropdown-menu , .dropdown-item:hover{
     border-radius: 10px;
     background-color: #f5d9cc;
 }
@@ -43,7 +43,7 @@ a.nav-link {
     width: 250px;
 }
 
-/* login button */
+/* login button 
 
 #DropdownForm {
     padding-top: 15px;
@@ -62,7 +62,7 @@ a.nav-link {
     left: 0;
     right: 0;
     text-align: center;
-    /* padding: 200px 0; */
+    /* padding: 200px 0; 
     z-index: 200;
     background: rgba(3, 3, 3, 0.7);
 }
@@ -73,10 +73,8 @@ a.nav-link {
 	animation: rotate .7s ease-in-out;
 }
 
-.success a {
-	color: red
-}
 
+ */
 
 
 
