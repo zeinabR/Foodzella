@@ -11,7 +11,7 @@ $stmt= $con-> prepare("SELECT count(*) FROM item WHERE Rest_ID=? ");
 $stmt->execute(array($_SESSION['RID']));
 $ITEMcount=$stmt->fetch();
 
-if($_SESSION['RitemNo'] < $ITEMcount){
+// if($_SESSION['RitemNo'] < $ITEMcount){
 
 $DelItem= $_SESSION['deleteItem'];
 
@@ -30,15 +30,15 @@ $stmt->execute(array($itemID));
             echo '</div>';
 
     }
-}
+// }
 
-else{
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>';
-        echo '<strong>' . 'Could not delete items,change Num of items first ' . '</strong>';
-        echo '</div>';
-}
+// else{
+//     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+//     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+//         <span aria-hidden="true">&times;</span>
+//     </button>';
+//         echo '<strong>' . 'Could not delete items,change Num of items first ' . '</strong>';
+//         echo '</div>';
+// }
 
 ?>

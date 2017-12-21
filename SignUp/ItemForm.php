@@ -11,10 +11,11 @@ session_start();
    
     
     include '../connect.php';
+    // include 'insert.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $state1 = $con->prepare("INSERT INTO manager(Name, Password, Phone_Num, Email ,City, Street) VALUES(:Sname, :Spass, :Stel, :Semail, :Scity, :Sstreet)");
+        $state1 = $con->prepare("INSERT INTO manager(Name, Password, PhoneNo, Email ,City, Street) VALUES(:Sname, :Spass, :Stel, :Semail, :Scity, :Sstreet)");
         $state1->execute(array(
             'Sname' =>  $_SESSION['Mname'],
             'Spass' =>  $_SESSION['Mpass'],
@@ -97,42 +98,42 @@ session_start();
 
 
 
-        $IN='Iname';
-        $IP='Price';
-        for($i=1 ; $i<= $_SESSION['RitemNo'] ;$i++){
-            // $j= $IN . $i;
+        // $IN='Iname';
+        // $IP='Price';
+        // for($i=1 ; $i<= $_SESSION['RitemNo'] ;$i++){
+        //     // $j= $IN . $i;
             // $k = $IP . $i;   
-        $Iname  = filter_var($_POST[$IN .$i], FILTER_SANITIZE_STRING);
-        $Price  = filter_var($_POST[$IP . $i], FILTER_SANITIZE_NUMBER_INT);
+        // $_SESSION['Iname']=$Iname  = filter_var($_POST['Item'], FILTER_SANITIZE_STRING);
+        // $_SESSION['Price']=$Price  = filter_var($_POST['Price'], FILTER_SANITIZE_NUMBER_INT);
     
   
 
-        $statt = $con->prepare("INSERT INTO item (Name, Price,Rest_ID) VALUES(:name, :Iprice, :Irestid)");
-        $statt->execute(array(
-            'name' => $Iname,
-            'Iprice' => $Price,
-            'Irestid' => $RID[0],
+        // $statt = $con->prepare("INSERT INTO item (Name, Price,Rest_ID) VALUES(:name, :Iprice, :Irestid)");
+        // $statt->execute(array(
+        //     'name' => $Iname,
+        //     'Iprice' => $Price,
+        //     'Irestid' => $RID[0],
             
-            ));
-        }
+        //     ));
+        // }
 
-        if(!$statt){
-            $Errors[] = 'Failed to set items ';   
-        }
+        // if(!$statt){
+        //     $Errors[] = 'Failed to set items ';   
+        // }
 
-        else
+        // else
         
-            {  
+        //     {  
               
-                echo '<div class="success text-success">
-                <i class="fa fa-check fa-2x"></i>
-                Welcome ';  echo '<strong>' . $_SESSION['Mname'] . '</strong>';
-                echo '</div>';  
-                $_SESSION['LOGIN'] = $_SESSION['Mname'];
-                $_SESSION['Cust'] = $ID[0];
-                header("refresh:2; url=http://localhost/dashboard/FOODZELLA/Home/index.php");                
-                // exit();
-            }   
+        //         echo '<div class="success text-success">
+        //         <i class="fa fa-check fa-2x"></i>
+        //         Welcome ';  echo '<strong>' . $_SESSION['Mname'] . '</strong>';
+        //         echo '</div>';  
+        //         $_SESSION['LOGIN'] = $_SESSION['Mname'];
+        //         $_SESSION['Cust'] = $ID[0];
+                // header("refresh:2; url=http://localhost/dashboard/FOODZELLA/Home/index.php");                
+        //         // exit();
+        //     }   
         
 
 
@@ -164,29 +165,32 @@ include '../init.php';
         <div class="strip">
             <form class="container" id="dropForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?> ">
                 <div class="">
-            <?php 
+            <!-- 
           $IN='Iname';
-          $IP='Price';
-            for($i=1 ; $i<=$_SESSION['RitemNo'] ;$i++){
-               $j= $IN . $i;
-               $k = $IP . $i;
-                echo '
-               
+          $IP='Price'; -->
+            <!-- // for($i=1 ; $i<=$_SESSION['RitemNo'] ;$i++){
+            //    $j= $IN . $i;
+            //    $k = $IP . $i;
+            //     echo ' -->
+               <div class="form-group-inline">
                     <div class=" form-group ">
                         <label for="Name">Item Name </label>
-                        <input type="text" class="form-control"  maxlength="50" id="name " placeholder="Item Name" name=' . $j . ' required>
+                        <input type="text" class="form-control"  maxlength="50" id="name " placeholder="Item Name" name=' Item ' required>
                     </div>
     
                     <div class=" form-group ">
                         <label for="Price">Item Price</label>
-                        <input type="num" class="form-control"  maxlength="3" id="price" placeholder="Item Price" name=' . $k . ' required>
-                    </div>';
-                    // $j++;
-                }
-            ?>
+                        <input type="num" class="form-control"  maxlength="3" id="price" placeholder="Item Price" name=' Price ' required>
+                    </div>
+                    <div id="button">
+                        <button type="submit" class="btn btn-outline-success  " name="signup"><a href="insert.php">Add</a></button>
+                    </div>
+                </div>
+                <!-- } -->
+            <!-- ?> -->
                           
                     <div id="button">
-                        <button type="submit" class="btn btn-outline-warning btn-sm submitbutton" name="signup">Next</button>
+                        <button class="btn btn-outline-warning btn-sm submitbutton" name="signup">Finish</button>
                     </div>
 
                 </div>

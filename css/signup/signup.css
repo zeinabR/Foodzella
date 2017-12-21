@@ -8,9 +8,14 @@
 
 
 .form{
-    background-color: #af2ba5;
+    background:url('../../images/signup (2).jpg');
+    background-size: cover;
 }
+.overlay{
 
+    background-color: rgba(3, 3, 3, 0.6);
+    height: 100%;
+}
 .strip{
     padding-top: 120px;
     padding-bottom: 100px;
@@ -64,7 +69,7 @@
     padding-bottom: 20px;
     text-align: center;
 }
-.submitbutton{
+.submitbtn{
     width: 200px;
     margin: auto;
     border-radius: 15px;

@@ -20,7 +20,7 @@ session_start();
     // $_SESSION['Rname']=$R[0][1];
     // $_SESSION['Rphone']=$R[0][3];
     // $_SESSION['Rcateg']=$R[0][0];
-    $_SESSION['RitemNo']=$R[0][6];
+    // $_SESSION['RitemNo']=$R[0][6];
     $_SESSION['MgrId']=$Cust[0];
     $_SESSION['RID']=$R[0][2];
     // $_SESSION['Rcity']=$Rcity;
@@ -80,7 +80,7 @@ session_start();
             // $stmt=$con->prepare("SELECT No_of_Items FROM restaurant WHERE Mgr_ID=? LIMIT 1");
             // $stmt->execute(array($Cust[0]));
             // $ITEMno=$stmt->fetch();
-            $_SESSION['RitemNo']=$ItemsNo;
+            // $_SESSION['RitemNo']=$ItemsNo;
         
             header("Location:Item.php");
             
@@ -249,16 +249,14 @@ include '../init.php';
                                 </select>                
                                 </div>
     
-                                <div class="form-group ">
+                                <!-- <div class="form-group ">
                                     <label for="items">No. of Items</label>
                                     <input type="number" class="form-control" minlength="8"  id="items" placeholder="Items' No." name="ItemsNo"
                                     
-                                    <?php
-                                    echo 'value=' . $R[0][6];
-                                    ?>
+                                  
 
                                     required >
-                                </div>
+                                </div> -->
     
                                 <div class="form-group ">
                                     <label for="City">Restaurant's City</label>

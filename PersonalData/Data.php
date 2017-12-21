@@ -65,7 +65,7 @@ if($Gender == 'manager'){
         $Cust= $_SESSION['Cust'];
         $_SESSION['LOGIN'] =$Cust[1];
 
-        if($stmt && ($Gender=='customer' || $Gender=='administrator')){
+        if($stmt && $Gender=='customer'){
 
             echo '<div class="success text-success">
                 <i class="fa fa-check fa-2x"></i>
@@ -81,7 +81,18 @@ if($Gender == 'manager'){
             // <i class="fa fa-check fa-2x"></i>
             //  ';  echo '<strong>' . 'Your Information Updated Successfully' . '</strong>';
             // echo '</div>';
+
+            $stmt=$con->prepare("SELECT * FROM restaurant WHERE Mgr_ID=? LIMIT 1");
+            $stmt->execute(array($Cust[0]));
+            $R=$stmt->fetchAll();
+            $_SESSION['RitemNo']=$R[0][6];
+            $_SESSION['MgrId']=$Cust[0];
+            $_SESSION['RID']=$R[0][2];
             header("Location:Rest.php");
+
+        }
+        else if($stmt && $Gender=='administrator'){
+            header("Location:admin.php");
 
         }
 

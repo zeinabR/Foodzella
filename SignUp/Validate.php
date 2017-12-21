@@ -17,25 +17,12 @@
         $Phone = filter_var($_POST['Phone'], FILTER_SANITIZE_NUMBER_INT);
         $Email = filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
         $Pass = filter_var($_POST['Password'], FILTER_SANITIZE_STRING);
+        $hashedPass = sha1($password);
         $City = filter_var($_POST['City'], FILTER_SANITIZE_STRING);
         $Street = filter_var($_POST['Street'], FILTER_SANITIZE_STRING);
         $Manager = filter_var($_POST['Manager'], FILTER_SANITIZE_STRING);       
           
-        // restaurant's info
-
-        // $Rname = filter_var($_POST['Rname'], FILTER_SANITIZE_STRING);
-        // $Rphone = filter_var($_POST['contactNo'], FILTER_SANITIZE_NUMBER_INT);
-        // $Category = filter_var($_POST['Category'], FILTER_SANITIZE_STRING);
-        // $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
-        // $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
-        // $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
-        // $Hours = filter_var($_POST['Hours'], FILTER_SANITIZE_NUMBER_INT);
-        // $Services = filter_var($_POST['Services'], FILTER_SANITIZE_STRING);
-        // $tables = filter_var($_POST['tables'], FILTER_SANITIZE_NUMBER_INT);
-        // $ItemsNo = filter_var($_POST['ItemsNo'], FILTER_SANITIZE_NUMBER_INT);
-        // $Rcity = filter_var($_POST['Rcity'], FILTER_SANITIZE_STRING);
-        // $Rstreet = filter_var($_POST['Rstreet'], FILTER_SANITIZE_STRING);
-        
+     
         $Errors;
         if (empty($Name)) {
             $Errors[] = 'Name Not Found';
@@ -142,45 +129,7 @@
                     $_SESSION['Mstreet'] = $Street;
                     $_SESSION['Gender']= 'manager';
                     header("Location: RestForm.php");
-                    // exit();
-                   
-                     
-                        // $state1=$con->prepare("SELECT Mgr_ID FROM manager WHERE Email = ? LIMIT 1");
-                        // $state1->execute(array($Email));
-                        // $ID=$state1->Fetch();
-                        
-                        // $s = $con->prepare("SELECT Contact_No FROM restaurant");
-                        // $conta[] = $s->fetch();
-
-        //                 if ($state1 && !in_array($Rphone,$conta)) {  
-        //                     $state = $con->prepare("INSERT INTO restaurant (Name, Contact_No, Category, No_of_Items ,RCity, RStreet,WorkHr,Services,No_available_Tables,Mgr_ID) VALUES(:Rname, :Rtel, :RCategory, :Ritems,:Rcity, :Rstreet,:workHr,:servies,:notables,:Mgrid)");
-        //                     $state->execute(array(
-        //                         'Rname' => $Rname,
-        //                         'Mgrid' => $ID[0],
-        //                         'RCategory' => $Category,
-        //                         'Rtel' => $Rphone,
-        //                         'Ritems' => $ItemsNo,
-        //                         'Rcity' => $Rcity,
-        //                         'Rstreet' => $Rstreet,
-        //                         'servies' =>$Services,
-        //                         'workHr' =>$Hours,
-        //                         'notables' =>$tables,
-        //                         ));
-                    
-        //                 }
-        //                 else {
-        //                     $Errors[] = 'Failed to Register Your Restaurant';
-        //                 }
-
-                    
-        //                 if ($state) {  
-        //                         echo '<div class="success text-success">
-        //                         <i class="fa fa-check fa-2x"></i>
-        //                         Welcome ';  echo '<strong>' . $Name . '</strong>';
-        //                         echo '</div>';  
-        //                         $Login = $Name;
-        //                     }
-                            
+                 
                          
                     }
 

@@ -21,6 +21,11 @@
         // });
     
 
+        // $(".submitbutton").on("click",function(){
+
+        //     window.location.href='../Home/index.php';
+        //     return false;
+        // });
         // $("#radio1").on("click", function() {
         //     $(".restaurantt").show();
         //     $(".restaurantt input").attr('required', 'required');

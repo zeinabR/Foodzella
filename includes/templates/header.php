@@ -41,19 +41,32 @@
                 <a class="nav-link" data-scroll="about"  href="../about/about.php">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " data-scroll="contact" href="../Home/index.php">CONTACT US</a>
+                <a class="nav-link contact" data-scroll="contact" href="#">CONTACT US</a>
             </li>
+
+            <?PHP
+                if($_SESSION['LOGIN']!='LOG IN'){
+                    echo'
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     OPTIONS
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
-                    <a class="dropdown-item" href="#">MESSAGES</a>
+              
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >';
+                if($_SESSION['Gender']=='manager'){
+                    echo '
+                    <a class="dropdown-item" href="../Message/message.php">MESSAGES</a>';
+                    }
+
+                    echo'
                     <a class="dropdown-item" href="../LogOut/LogOut.php">LOG OUT</a>
                     <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                 </div>
-            </li>
 
+               
+            </li>';
+        }
+        ?>
             <li class="nav-item ">
             <a class="nav-link " data-scroll="Login"
             

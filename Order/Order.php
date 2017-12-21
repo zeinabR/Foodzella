@@ -11,14 +11,75 @@
 
         include '../connect.php';
 
+     
+
+        if (isset($_POST['finish'])) {
+
+            
+
+                echo '<div class="success text-success">
+                <i class="fa fa-check fa-2x"></i>
+                    ';  echo '<strong>' . 'Thank You' . '</strong>';
+                echo '</div>'; 
+
+                
+                header("refresh:2; url=http://localhost/dashboard/FOODZELLA/Home/index.php");
+                // exit();
+                }
+           
+            
+
+            // $Type = filter_var($_POST['Type'], FILTER_SANITIZE_STRING);
+            // $Iname = filter_var($_POST['Iname'], FILTER_SANITIZE_STRING);
+            // $Amount = filter_var($_POST['Amount'], FILTER_SANITIZE_NUMBER_INT);
+     
+            // $Cust=$_SESSION['Cust'];
+
+            // $state = $con->prepare("INSERT INTO `order` (Rest_ID, Cust_ID, `Type`) VALUES(:Rid,:Cid,:Otype)");
+            // $state->execute(array(
+            //     'Rid' => $_SESSION['ID'],
+            //     'Cid' => $Cust[0],
+            //     'Otype' => $Type,
+            //     // 'date' => $date,
+               
+            //     ));
+            
+            // if($state){
+
+            //     $stat=$con->prepare("SELECT `Item_ID` FROM `item` WHERE `Name`=? AND Rest_ID=? LIMIT 1 ");
+            //     $stat->execute(array($Iname, $_SESSION['ID']));
+            //     $ItemID=$stat->fetch();
+
+            //     $stmt=$con->prepare("SELECT `Order_ID` FROM `order` WHERE Rest_ID=? ORDER BY Order_ID DESC LIMIT 1 ");
+            //     $stmt->execute(array($_SESSION['ID']));
+            //     $OrderID=$stmt->fetch();
+
+            //     if($stmt && $stat)
+            //     {
+            //         $state = $con->prepare("INSERT INTO ordered_items(Item_ID, Order_ID ) VALUES(:Iid, :Oid)");
+            //         $state->execute(array(
+            //             'Iid' => $ItemID[0],
+            //             'Oid' => $OrderID[0],
+                                  
+            //             )); 
+
+            //         }
+            //      else{
+            //         $errors[]='Failed to make an order';
+
+            //      }   
+            //     }
+        
+    
+
       
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['send'])) {
             
             $Type = filter_var($_POST['Type'], FILTER_SANITIZE_STRING);
             $Iname = filter_var($_POST['Iname'], FILTER_SANITIZE_STRING);
             $Amount = filter_var($_POST['Amount'], FILTER_SANITIZE_NUMBER_INT);
-            $Table = filter_var($_POST['table'], FILTER_SANITIZE_NUMBER_INT);
+            // $Table = filter_var($_POST['table'], FILTER_SANITIZE_NUMBER_INT);
             $Cust=$_SESSION['Cust'];
 
             // date_default_timezone_set('Egypt');
@@ -64,29 +125,32 @@
                         if($state){
                             $state = $con->prepare("INSERT INTO `message`(`Text`, Order_ID ) VALUES(:text, :Oid)");
                             $state->execute(array(
-                                'text' => $Cust[1] . ' requests an order of ' . $Iname,
+                                'text' => $Cust[1] . ' requests ' . $Type . ' and item name is ' . $Iname . ' , ' . $Amount . ' piece',
                                 'Oid' => $OrderID[0],
                                
                                
                                 )); 
-                            if($stat){
+                        //     if($stat){
 
-                            echo '<div class="success text-success">
-                            <i class="fa fa-check fa-2x"></i>
-                             ';  echo '<strong>' . 'Order Send Successfully' . '</strong>';
-                            echo '</div>'; 
+                        //     echo '<div class="success text-success">
+                        //     <i class="fa fa-check fa-2x"></i>
+                        //      ';  echo '<strong>' . 'Order Send Successfully' . '</strong>';
+                        //     echo '</div>'; 
 
                            
-                            header("refresh:2; url=http://localhost/dashboard/FOODZELLA/Home/index.php");
-                            // exit();
-                            }
-                        }
+                        //     header("refresh:2; url=http://localhost/dashboard/FOODZELLA/Home/index.php");
+                        //     // exit();
+                        //     }
+                        // }
+                        // else{
+                        //     $errors[]='Failed to send order';
+                        // }
                 }
-
             }
-            else{
-                $errors[]='Failed to send order';
-            }
+        }
+    }
+            
+            
             
             if (isset($errors)) {
                 echo '<div class="error">';
@@ -100,7 +164,7 @@
                 }
                 echo '</div>';
             }
-        }
+        
 
         include '../init.php';
                 
@@ -115,9 +179,8 @@
 
                     <div class=" form-group ">
                         <label for="Type">Type of Order</label>
-                        <select class="custom-select" name="Type" required>
-                            <option selected>Choose Type</option>
-                            <option value="Table Reservation" class="Treserve">Table Reservation</option>
+                        <select class="custom-select Treserve" name="Type" required>
+                            <option value="Table Reservation" >Table Reservation</option>
                             <option value="Delivery">Delivery</option>
                         </select>
                     </div>
@@ -126,7 +189,6 @@
                     <div class=" form-group ">
                         <label for="Item">Item's Name</label>
                         <select  class="custom-select"  name="Iname" required>
-                        <option selected>Choose Item</option>
 
                         <?php 
 
@@ -150,25 +212,22 @@
 
                     <div class=" form-group">
                             <label for="Amount">Amount</label>
-                            <input type="num" class="Amount"  maxlength="50" id="Amount"  name="Amount" required>
+                            <input type="num" class="Amount"  maxlength="50" id="Amount"  name="Amount"  >
                     </div>
 
-                    <div class=" form-group reserve">
+                    <button type="submit " class="btn btn-outline-warning btn-sm btn-block submitbutton " name="send">Send</button>
+
+                    <!-- <div class=" form-group reserve">
                             <label for="Table">No. of Tables</label>
                             <input type="num" class="Amount"  maxlength="5" id="table"  name="table" >
-                    </div>
+                    </div> -->
                  
 
                     <div id="DropdownForm">
-                            <button type="submit " class="btn btn-outline-danger btn-sm btn-block submitbutton " name="Send">Send</button>
+                            <button type="submit " class="btn btn-outline-danger btn-sm btn-block submitbutton " name="finish">Finish</button>
                     </div>
                
                     
-                      
-                    <!-- <div class=" form-group">
-                            <label for="Amount">Date</label>
-                            <input type="num" class="Amount"  maxlength="50" id="Amount"  name="Amount" required>
-                    </div> -->
                     
                     <!-- <?php
                 

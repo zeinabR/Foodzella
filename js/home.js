@@ -8,12 +8,14 @@ $(function() {
 
  //scroll to sections
 
-//  $(".navbar .navbar-nav a.nav-link").on("click", function() {
-//     var object = $(this);
-//     $("html ,body").animate({
-//         scrollTop: $(".restaurantORrecipe").offset().top - 55
-//     }, 700);
-// });
+ $(".navbar .navbar-nav a.nav-link.contact").on("click", function() {
+    var object = $(this);
+    $("html ,body").animate({
+        scrollTop: $(".contactUs").offset().top - 50
+    }, 900);
+});
+
+
 $(".form form input").on("blur", function() {
     if ($(this).is(":invalid")) {
         $(this).removeClass("is-valid");

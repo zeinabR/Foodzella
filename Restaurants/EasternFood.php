@@ -41,6 +41,24 @@
                     <hr>
                     <p><i class="fa fa-2x fa-cutlery"></i>  Category :  <?php echo $Mixed[0]; ?> </p>
                     <hr>
+                    <p><i class="fa fa-2x fa-star-o"></i>  Rates : 
+                        
+                         <?php 
+                          $stmt = $con->prepare("SELECT Order_ID FROM `order` WHERE Rest_ID = ? ");
+                          $stmt->execute(array($Mixed[2]));
+                          $c = $stmt->fetchAll();
+                          $count = $stmt->rowCount();
+                          if($count <10)
+                         echo 'GOOD'; 
+                         else if($count >10 && $count<20){
+                            echo 'VERY GOOD'; 
+                         }
+                         else if($count>20){
+                            echo 'EXCELLANT';
+                         }
+                         
+                         ?> </p>
+                        <hr>
                     <p><i class="fa fa-2x fa-check-circle-o"></i>  Service :  
                     <?php 
                         if($Mixed[9] == 'Both'){
